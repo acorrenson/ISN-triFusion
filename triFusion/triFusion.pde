@@ -2,6 +2,7 @@ int[] t = {0, 5, 6, 8, 7, 4};
 
 void triFusion(int[] list) {
   
+  // condition to stop recursion
   if(list.length == 1) {
     return;
   }
@@ -9,30 +10,29 @@ void triFusion(int[] list) {
   int l = list.length;
   int n = (int) l/2;
   
-  println("l", l);
-  println("n", l-n);
+  // println("l", l);
+  // println("n", l-n);
   
+  // define two list (left and right)
   int[] listG = new int[n];
   int[] listD = new int[l - n];
-
+  
+  // fill each list
   for (int i = 0; i < n; i++) {
     listG[i] = list[i];
-    println("G", listG[i]);
   }
   
   int y = 0;
   for (int i = n; i < list.length; i++) {
     listD[y] = list[i];
-    println("D", listD[y]);
     y++;
   }
   
+  // recursion
   triFusion(listG);
   triFusion(listD);
   
-  int[] nlG = new int[listG.length];
-  int[] nlD = new int[listD.length];
-  
+  // merge and sort both list
   int iG = 0;
   int iD = 0;
   
